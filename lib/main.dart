@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:street_parking/screen/login_sreen.dart';
+import 'package:street_parking/utils/color.dart';
+import 'package:street_parking/utils/logging.dart';
 
-void main() {
+/// Custom Log
+final mLog = logger;
+
+Future<void> main() async{
+
+  /// 플랫폼 채널의 위젯 바인딩을 보장해야한다.
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // await Permission.activityRecognition.request();
+  // await _initAuthorization();
+
   runApp(const MyApp());
 }
 
@@ -10,59 +25,44 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    final themeData = ThemeData();
+
+    /// 상단 상태바 Color
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: Colors.white)
     );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
+    /// 앱 화면 세로 위쪽 방향으로 고정
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
+    return MaterialApp(
+      title: 'Street Parking',
+      debugShowCheckedModeBanner: false,
+      theme:Theme.of(context).copyWith(
+          colorScheme: themeData.colorScheme.copyWith(primary: mainColor),
+          primaryTextTheme: themeData.textTheme.apply(fontFamily: 'nanum_square')
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
+      localizationsDelegates:
+      [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+
+      supportedLocales:
+      [
+        Locale('ko', ''),
+        Locale('en', ''),
+      ],
+
+      initialRoute: 'login_screen',
+
+      routes:
+      {
+        'login_screen' : (context) => LoginScreen(),
+      },
     );
   }
 }
