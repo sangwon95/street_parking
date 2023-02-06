@@ -24,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   /// Login TextEditingController
   final  _loginTEC = LoginTextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
 
@@ -108,9 +109,39 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Padding(
                                   padding: const EdgeInsets.all(20.0),
                                   child: Frame.myText(text: '회원가입', fontSize: 0.9, color: Colors.grey, fontWeight: FontWeight.w600)))
-                      )
+                      ),
                     ],
-                  )
+                  ),
+
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Frame.myText(text:'------------------ or -----------------', color: Colors.grey)
+                      ],
+                    ),
+                  ),
+
+                  // SocialLoginButton(
+                  //     name: '카카오로 로그인',
+                  //     backgroundColor: Colors.yellow,
+                  //     textColor: Colors.black,
+                  //     context: context
+                  // ),
+                  // SocialLoginButton(
+                  //     name: 'Apple로 로그인',
+                  //     backgroundColor: Colors.black,
+                  //     textColor: Colors.white,
+                  //     context: context
+                  // ),
+                  //
+                  // SocialLoginButton(
+                  //     name: '구글로 로그인',
+                  //     backgroundColor: Colors.white,
+                  //     textColor: Colors.black,
+                  //     context: context
+                  // ),
                 ],
               ),
             ),

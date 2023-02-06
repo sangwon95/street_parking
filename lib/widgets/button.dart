@@ -71,71 +71,72 @@ class LoginButton extends StatelessWidget {
 // }
 //
 //
-// /// 회원가입 버튼
-// class SignButton extends StatelessWidget {
-//
-//   final SignEdit signEdit;
-//   final BuildContext context;
-//   final VoidCallback signMsgCallback; // 회원가입 완료 메시지 callback 함수
-//
-//   SignButton({required this.signEdit, required this.context, required this.signMsgCallback});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//         padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
-//         width: double.infinity,
-//         child: TextButton(
-//             style: TextButton.styleFrom(
-//                 elevation: 5.0,
-//                 backgroundColor: mainColor,
-//                 padding: EdgeInsets.all(17.0),
-//                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
-//             onPressed: ()
-//             {
-//               doSign();
-//             },
-//             child: Text('회원 가입', textScaleFactor: 1.1, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
-//         )
-//     );
-//   }
-//
-//   void doSign() async{
-//     if(checkValidate(context, signEdit)) {
-//       DefaultStatus defaultStatus = await client.dioSign(signEdit.toMap());
-//
-//       if(defaultStatus.code == '200'){
-//         Navigator.pop(context);
-//         signMsgCallback();
-//       }
-//       else if(defaultStatus.code == 'ERR_DUPLICATED_ID'){
-//         CustomDialog.showMyDialog('이메일 중복!', '이메일이 중복되었습니다. 확인 후 다시 시도바랍니다.', context, false);
-//       }
-//       else{
-//         CustomDialog.showMyDialog('회원가입!', '서버 불안정으로 회원가입 할 수 없습니다.', context, false);
-//       }
-//     }
-//   }
-//
-//   static bool checkValidate(BuildContext context, SignEdit signEdit)
-//   {
-//     if(
-//     SignValidate().checkID(signEdit.idController.text, context)&&                // 아이디
-//     SignValidate().checkPassword(signEdit.passController.text, context)&&        // 비밀번호
-//     SignValidate().checkPassword2(signEdit.pass2Controller.text, context)&&      // 비밀번호 재입력
-//     SignValidate().checkSamePassword(signEdit.passController.text,               // 비밀번호 일치여부
-//         signEdit.pass2Controller.text, context)&&
-//     SignValidate().checkGender(signEdit.gender, context)&&                       // 성별
-//     SignValidate().checkDateOfBirth(signEdit.dateOfBirth, context)&&             // 생년월일
-//     SignValidate().checkJobName(signEdit.jobName, context)){                     // 직무
-//       return true; // 위 체크 내용이 true 경우
-//     }
-//     else
-//       return false; // 위 체크 내용이 false 경우
-//   }
-// }
-//
-//
+/// 회원가입 버튼
+class SignUpButton extends StatelessWidget {
+
+  final BuildContext context;
+ // final VoidCallback signMsgCallback; // 회원가입 완료 메시지 callback 함수
+
+  SignUpButton({required this.context,
+    //required this.signEdit,  required this.signMsgCallback
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
+        width: double.infinity,
+        child: TextButton(
+            style: TextButton.styleFrom(
+                elevation: 5.0,
+                backgroundColor: mainColor,
+                padding: EdgeInsets.all(17.0),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
+            onPressed: ()
+            {
+              //doSign();
+            },
+            child: Text('회원 가입', textScaleFactor: 1.1, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))
+        )
+    );
+  }
+
+  // void doSign() async{
+  //   if(checkValidate(context, signEdit)) {
+  //     DefaultStatus defaultStatus = await client.dioSign(signEdit.toMap());
+  //
+  //     if(defaultStatus.code == '200'){
+  //       Navigator.pop(context);
+  //       signMsgCallback();
+  //     }
+  //     else if(defaultStatus.code == 'ERR_DUPLICATED_ID'){
+  //       CustomDialog.showMyDialog('이메일 중복!', '이메일이 중복되었습니다. 확인 후 다시 시도바랍니다.', context, false);
+  //     }
+  //     else{
+  //       CustomDialog.showMyDialog('회원가입!', '서버 불안정으로 회원가입 할 수 없습니다.', context, false);
+  //     }
+  //   }
+  // }
+  //
+  // static bool checkValidate(BuildContext context, SignEdit signEdit)
+  // {
+  //   if(
+  //   SignValidate().checkID(signEdit.idController.text, context)&&                // 아이디
+  //   SignValidate().checkPassword(signEdit.passController.text, context)&&        // 비밀번호
+  //   SignValidate().checkPassword2(signEdit.pass2Controller.text, context)&&      // 비밀번호 재입력
+  //   SignValidate().checkSamePassword(signEdit.passController.text,               // 비밀번호 일치여부
+  //       signEdit.pass2Controller.text, context)&&
+  //   SignValidate().checkGender(signEdit.gender, context)&&                       // 성별
+  //   SignValidate().checkDateOfBirth(signEdit.dateOfBirth, context)&&             // 생년월일
+  //   SignValidate().checkJobName(signEdit.jobName, context)){                     // 직무
+  //     return true; // 위 체크 내용이 true 경우
+  //   }
+  //   else
+  //     return false; // 위 체크 내용이 false 경우
+  // }
+}
+
+
 /// 이용약관 완료 버튼
 class TermsButton extends StatelessWidget {
   final String btnName;
@@ -173,6 +174,47 @@ class TermsButton extends StatelessWidget {
         ));
   }
 }
+/// 소셜 로그인 버튼
+class SocialLoginButton extends StatelessWidget {
+
+  final String name;
+  final Color backgroundColor;
+  final Color textColor;
+  final BuildContext context;
+
+  SocialLoginButton({required this.name, required this.backgroundColor, required this.textColor, required this.context});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.fromLTRB(30, 10, 30, 10),
+        width: double.infinity,
+        child: TextButton(
+            style: TextButton.styleFrom(
+                elevation: 1.0,
+                backgroundColor: backgroundColor,
+                padding: EdgeInsets.all(17.0),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+            onPressed: ()
+            {
+              if(name == '카카오로 로그인'){
+               // KakaoLogin().doKakaoLogin();
+              }
+            },
+            child: Frame.myText(
+              text: name,
+              fontSize: 1.1,
+              color: textColor,
+              fontWeight: FontWeight.w600,
+            )
+        )
+    );
+  }
+
+
+
+}
+
 //
 //
 // /// 상담 메뉴 이동 버튼

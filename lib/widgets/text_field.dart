@@ -59,14 +59,14 @@ class SignTextField extends StatelessWidget {
       [
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
-          child: Text(headText, textScaleFactor: 1.0, style: TextStyle(color: Colors.grey[700], fontWeight: FontWeight.bold)),
+          child: Text('✓ $headText', textScaleFactor: 1.0, style: TextStyle(color: Colors.grey[700], fontWeight: FontWeight.bold)),
         ),
 
         Container(
             height: 60.0,
             alignment: Alignment.centerLeft,
             child: MediaQuery(
-              data:Etc.getScaleFontSize(context, fontSize: 0.75),
+              data: Etc.getScaleFontSize(context, fontSize: 0.9),
               child: TextField(
                 enabled: type == 'birth' ? false : true,
                 autofocus: false,
@@ -74,8 +74,9 @@ class SignTextField extends StatelessWidget {
                 controller: controller,
                 style: TextStyle(color: Colors.black),
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: const BorderRadius.all(const Radius.circular(5.0))),
-                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: textFieldBorderColor, width: 1.5)),
+                    border :OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey, width: 2.0)),
                     contentPadding: EdgeInsets.only(left: 12, top: 15),
                     fillColor: Colors.red,
                     hoverColor: mainColor,

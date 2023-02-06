@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:street_parking/screen/login_sreen.dart';
+import 'package:street_parking/screen/signup_screen.dart';
 import 'package:street_parking/utils/color.dart';
 import 'package:street_parking/utils/logging.dart';
 
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
       routes:
       {
         'login_screen' : (context) => LoginScreen(),
+        'signup_screen' : (context) => SignUpScreen(showSignCallbackMessage: () {  },),
       },
     );
   }

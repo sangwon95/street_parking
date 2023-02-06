@@ -38,6 +38,7 @@ dependencies:
   logger: ^1.1.0
   shared_preferences: ^2.0.0
   flutter_network_connectivity: ^0.0.6
+  mask_text_input_formatter: ^2.4.0
   flutter_localizations:
     sdk: flutter
 

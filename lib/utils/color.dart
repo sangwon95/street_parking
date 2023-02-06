@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final mainColor            = Color(0xff7e8db6);
+final mainColor            = Color(0xff3ea391);
 final guideBackGroundColor = Color(0xfff3f5fd);
 final homeBackgroundColor  = Color(0xfff4f4f9);
 
